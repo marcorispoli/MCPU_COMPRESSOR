@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_debugWindow_t {
-    const uint offsetsAndSize[32];
-    char stringdata0[183];
+    const uint offsetsAndSize[28];
+    char stringdata0[152];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_debugWindow_t, stringdata0) + ofs), len 
@@ -33,23 +33,20 @@ QT_MOC_LITERAL(0, 11), // "debugWindow"
 QT_MOC_LITERAL(12, 18), // "onDebugClearButton"
 QT_MOC_LITERAL(31, 0), // ""
 QT_MOC_LITERAL(32, 16), // "onLogClearButton"
-QT_MOC_LITERAL(49, 16), // "onSoftPoffButton"
-QT_MOC_LITERAL(66, 13), // "onAbortButton"
-QT_MOC_LITERAL(80, 10), // "assignData"
-QT_MOC_LITERAL(91, 9), // "rxFromCan"
-QT_MOC_LITERAL(101, 5), // "canId"
-QT_MOC_LITERAL(107, 4), // "data"
-QT_MOC_LITERAL(112, 7), // "txToCan"
-QT_MOC_LITERAL(120, 10), // "timerEvent"
-QT_MOC_LITERAL(131, 12), // "QTimerEvent*"
-QT_MOC_LITERAL(144, 2), // "ev"
-QT_MOC_LITERAL(147, 30), // "on_logEnableCheck_stateChanged"
-QT_MOC_LITERAL(178, 4) // "arg1"
+QT_MOC_LITERAL(49, 10), // "assignData"
+QT_MOC_LITERAL(60, 9), // "rxFromCan"
+QT_MOC_LITERAL(70, 5), // "canId"
+QT_MOC_LITERAL(76, 4), // "data"
+QT_MOC_LITERAL(81, 7), // "txToCan"
+QT_MOC_LITERAL(89, 10), // "timerEvent"
+QT_MOC_LITERAL(100, 12), // "QTimerEvent*"
+QT_MOC_LITERAL(113, 2), // "ev"
+QT_MOC_LITERAL(116, 30), // "on_logEnableCheck_stateChanged"
+QT_MOC_LITERAL(147, 4) // "arg1"
 
     },
     "debugWindow\0onDebugClearButton\0\0"
-    "onLogClearButton\0onSoftPoffButton\0"
-    "onAbortButton\0assignData\0rxFromCan\0"
+    "onLogClearButton\0assignData\0rxFromCan\0"
     "canId\0data\0txToCan\0timerEvent\0"
     "QTimerEvent*\0ev\0on_logEnableCheck_stateChanged\0"
     "arg1"
@@ -62,7 +59,7 @@ static const uint qt_meta_data_debugWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,26 +67,22 @@ static const uint qt_meta_data_debugWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   68,    2, 0x0a,    1 /* Public */,
-       3,    0,   69,    2, 0x0a,    2 /* Public */,
-       4,    0,   70,    2, 0x0a,    3 /* Public */,
-       5,    0,   71,    2, 0x0a,    4 /* Public */,
-       6,    0,   72,    2, 0x0a,    5 /* Public */,
-       7,    2,   73,    2, 0x0a,    6 /* Public */,
-      10,    2,   78,    2, 0x0a,    9 /* Public */,
-      11,    1,   83,    2, 0x0a,   12 /* Public */,
-      14,    1,   86,    2, 0x08,   14 /* Private */,
+       1,    0,   56,    2, 0x0a,    1 /* Public */,
+       3,    0,   57,    2, 0x0a,    2 /* Public */,
+       4,    0,   58,    2, 0x0a,    3 /* Public */,
+       5,    2,   59,    2, 0x0a,    4 /* Public */,
+       8,    2,   64,    2, 0x0a,    7 /* Public */,
+       9,    1,   69,    2, 0x0a,   10 /* Public */,
+      12,    1,   72,    2, 0x08,   12 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::UShort, QMetaType::QByteArray,    8,    9,
-    QMetaType::Void, QMetaType::UShort, QMetaType::QByteArray,    8,    9,
-    QMetaType::Void, 0x80000000 | 12,   13,
-    QMetaType::Void, QMetaType::Int,   15,
+    QMetaType::Void, QMetaType::UShort, QMetaType::QByteArray,    6,    7,
+    QMetaType::Void, QMetaType::UShort, QMetaType::QByteArray,    6,    7,
+    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, QMetaType::Int,   13,
 
        0        // eod
 };
@@ -102,13 +95,11 @@ void debugWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         switch (_id) {
         case 0: _t->onDebugClearButton(); break;
         case 1: _t->onLogClearButton(); break;
-        case 2: _t->onSoftPoffButton(); break;
-        case 3: _t->onAbortButton(); break;
-        case 4: _t->assignData(); break;
-        case 5: _t->rxFromCan((*reinterpret_cast< ushort(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
-        case 6: _t->txToCan((*reinterpret_cast< ushort(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
-        case 7: _t->timerEvent((*reinterpret_cast< QTimerEvent*(*)>(_a[1]))); break;
-        case 8: _t->on_logEnableCheck_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->assignData(); break;
+        case 3: _t->rxFromCan((*reinterpret_cast< ushort(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
+        case 4: _t->txToCan((*reinterpret_cast< ushort(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
+        case 5: _t->timerEvent((*reinterpret_cast< QTimerEvent*(*)>(_a[1]))); break;
+        case 6: _t->on_logEnableCheck_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -122,7 +113,7 @@ const QMetaObject debugWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_debugWindow_t
 , QtPrivate::TypeAndForceComplete<debugWindow, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ushort, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ushort, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QTimerEvent *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ushort, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ushort, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QTimerEvent *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 >,
@@ -149,13 +140,13 @@ int debugWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 7;
     }
     return _id;
 }

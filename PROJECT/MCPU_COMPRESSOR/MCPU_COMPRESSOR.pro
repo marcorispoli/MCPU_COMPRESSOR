@@ -1,7 +1,7 @@
 TARGET_SOURCE = $${PWD}/../../SOURCE
 TARGET_RESOURCE = $${PWD}/../../RESOURCES
 SHARED = $${PWD}/../../MCPU_SHARED_MODULES/MODULES
-include($${PWD}/../Compressor.pri)
+include($${PWD}/../MCPU_COMPRESSOR.pri)
 
 
 

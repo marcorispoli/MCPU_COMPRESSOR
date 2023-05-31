@@ -33,10 +33,14 @@ SOURCES += \
     $${SHARED}/APPLOG/applog.cpp \
     $${SHARED}/CONFIGFILE/configfile.cpp \
     $${SHARED}/CAN_DEVICE_PROTOCOL/can_device_protocol.cpp \
-    $${TARGET_SOURCE}/INTERFACE/interface.cpp \    
+    $${SHARED}/CAN_DEVICE_PROTOCOL/can_bootloader_protocol.cpp \
+    $${TARGET_SOURCE}/INTERFACE/interface.cpp \
     $${TARGET_SOURCE}/PROTOCOL/device_protocol.cpp \
+    $${TARGET_SOURCE}/PROTOCOL/workflow_bootloader.cpp \
+    $${TARGET_SOURCE}/PROTOCOL/workflow_init.cpp \
+    $${TARGET_SOURCE}/PROTOCOL/workflow_idle.cpp \
     $${TARGET_SOURCE}/WINDOW/window.cpp \
-    $${TARGET_SOURCE}/CONFIGURATION/boardconfig.cpp \
+
 
 
 HEADERS += \
@@ -45,12 +49,13 @@ HEADERS += \
     $${SHARED}/CAN_CLIENT/canclient.h \
     $${SHARED}/APPLOG/applog.h \
     $${SHARED}/CONFIGFILE/configfile.h \
+    $${SHARED}/CONFIGFILE/sysconfig.h \
     $${SHARED}/CAN_DEVICE_PROTOCOL/can_device_protocol.h \
-    $${TARGET_SOURCE}/INTERFACE/interface.h \    
+    $${SHARED}/CAN_DEVICE_PROTOCOL/can_bootloader_protocol.h \
+    $${TARGET_SOURCE}/INTERFACE/interface.h \
     $${TARGET_SOURCE}/PROTOCOL/device_protocol.h \
     $${TARGET_SOURCE}/WINDOW/window.h \
     $${TARGET_SOURCE}/CONFIGURATION/boardconfig.h \
-
 
 
 # Aggiunge tutti i path di progetto
@@ -65,5 +70,3 @@ INCLUDEPATH += \
     $${TARGET_SOURCE}/PROTOCOL \
     $${TARGET_SOURCE}/WINDOW  \
     $${TARGET_SOURCE}/CONFIGURATION  \
-
-

@@ -45,16 +45,12 @@ signals:
 public slots:
 
     void onDebugClearButton(void);
-    void onLogClearButton(void);
-    void onSoftPoffButton(void);
-    void onAbortButton(void);
-
+    void onLogClearButton(void);   
     void assignData(void);
 
 
     void rxFromCan(ushort canId, QByteArray data);
     void txToCan(ushort canId, QByteArray data);
-
     void timerEvent(QTimerEvent* ev);
 
 

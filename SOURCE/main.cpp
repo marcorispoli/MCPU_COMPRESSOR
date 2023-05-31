@@ -23,10 +23,12 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    appLog(argc, argv, "C:/OEM/Logs/GANTRY/PowerService.log", debugWindow::debugMessageHandler);
+    appLog(argc, argv, "C:\\OEM\\Gantry\\Log\\mcpu_compressor.log", debugWindow::debugMessageHandler);
+
 
     // Open the application config file
     CONFIG = new boardConfig();
+    SYSCONFIG = new sysConfig();
 
     // Initialize the WINDOW to nullptr so that in case of Operating mode
     // the application skips the WINDOW callbacks
@@ -40,11 +42,12 @@ int main(int argc, char *argv[])
 
     // Open the server for the external commands
     INTERFACE = new Interface();
-    INTERFACE->Start();
 
     // Open the communication protocol
     PROTOCOL = new deviceProtocol();
 
+    // Start communication with the Master
+    INTERFACE->Start();
     return a.exec();
 }
 

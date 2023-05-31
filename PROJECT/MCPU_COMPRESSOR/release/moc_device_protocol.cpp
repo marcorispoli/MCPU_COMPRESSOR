@@ -22,21 +22,24 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_deviceProtocol_t {
-    const uint offsetsAndSize[8];
-    char stringdata0[52];
+    const uint offsetsAndSize[12];
+    char stringdata0[81];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_deviceProtocol_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_deviceProtocol_t qt_meta_stringdata_deviceProtocol = {
     {
 QT_MOC_LITERAL(0, 14), // "deviceProtocol"
-QT_MOC_LITERAL(15, 22), // "workflowINITIALIZATION"
-QT_MOC_LITERAL(38, 0), // ""
-QT_MOC_LITERAL(39, 12) // "workflowIDLE"
+QT_MOC_LITERAL(15, 15), // "workflowAPPINIT"
+QT_MOC_LITERAL(31, 0), // ""
+QT_MOC_LITERAL(32, 16), // "workflowBOOTINIT"
+QT_MOC_LITERAL(49, 12), // "workflowIDLE"
+QT_MOC_LITERAL(62, 18) // "workflowBOOTLOADER"
 
     },
-    "deviceProtocol\0workflowINITIALIZATION\0"
-    "\0workflowIDLE"
+    "deviceProtocol\0workflowAPPINIT\0\0"
+    "workflowBOOTINIT\0workflowIDLE\0"
+    "workflowBOOTLOADER"
 };
 #undef QT_MOC_LITERAL
 
@@ -46,7 +49,7 @@ static const uint qt_meta_data_deviceProtocol[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -54,10 +57,14 @@ static const uint qt_meta_data_deviceProtocol[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   26,    2, 0x08,    1 /* Private */,
-       3,    0,   27,    2, 0x08,    2 /* Private */,
+       1,    0,   38,    2, 0x08,    1 /* Private */,
+       3,    0,   39,    2, 0x08,    2 /* Private */,
+       4,    0,   40,    2, 0x08,    3 /* Private */,
+       5,    0,   41,    2, 0x08,    4 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -70,8 +77,10 @@ void deviceProtocol::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         auto *_t = static_cast<deviceProtocol *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->workflowINITIALIZATION(); break;
-        case 1: _t->workflowIDLE(); break;
+        case 0: _t->workflowAPPINIT(); break;
+        case 1: _t->workflowBOOTINIT(); break;
+        case 2: _t->workflowIDLE(); break;
+        case 3: _t->workflowBOOTLOADER(); break;
         default: ;
         }
     }
@@ -86,7 +95,7 @@ const QMetaObject deviceProtocol::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_deviceProtocol_t
 , QtPrivate::TypeAndForceComplete<deviceProtocol, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -113,13 +122,13 @@ int deviceProtocol::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

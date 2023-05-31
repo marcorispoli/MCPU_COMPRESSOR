@@ -59,11 +59,11 @@
 */
 namespace Application
 {
-   static const char*           IP_CAN_ADDRESS = "127.0.0.1"; //!< Can Client Server IP address
-   static const unsigned short  CAN_PORT = 10001; //!< Can Client Server Port
-   static const char*           IP_INTERFACE_ADDRESS = "127.0.0.1"; //!< Motor Interface IP address
-   static const unsigned short  INTERFACE_PORT = 10004; //!< Power Service Interface Port
-   static const unsigned char   DEVICE_ID = 0x11; //!< Power Service Can Device ID
+    static const unsigned short APP_MAJ_REV = 0;
+    static const unsigned short APP_MIN_REV = 1;
+    static const unsigned short APP_SUB_REV = 0;
+
+    static const unsigned char   DEVICE_ID = 0x2; //!< Compressor Can Device ID
 }
 
 
@@ -77,12 +77,14 @@ namespace Application
 #include "can_device_protocol.h"
 #include "device_protocol.h"
 #include "boardconfig.h"
+#include "sysconfig.h"
 
 #define WINDOW          window
 #define INTERFACE       pInterface
 #define DEBUG           window
 #define PROTOCOL        pProtocol
 #define CONFIG          pConfig
+#define SYSCONFIG       pSysConfig
 
 // Global definitions
 #ifdef MAIN_CPP
@@ -90,12 +92,14 @@ namespace Application
      Interface*                  INTERFACE;
      deviceProtocol*             PROTOCOL;
      boardConfig*                CONFIG;
+     sysConfig*                  SYSCONFIG;
 
 #else
     extern debugWindow*                WINDOW;
     extern Interface*                  INTERFACE;
     extern deviceProtocol*             PROTOCOL;
     extern boardConfig*                CONFIG;
+    extern sysConfig*                  SYSCONFIG;
 #endif
 
 #ifdef TIME_MEASURE
