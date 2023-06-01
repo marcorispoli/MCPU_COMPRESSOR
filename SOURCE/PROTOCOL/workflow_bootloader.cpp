@@ -18,7 +18,7 @@ void deviceProtocol::workflowBOOTLOADER(void){
         QTimer::singleShot(1,this, SLOT(workflowBOOTLOADER()));
         return;
     }
-
+/*
     switch(subWorkflow){
 
         case _WF_START_0: // Activate the bootloader
@@ -55,6 +55,6 @@ void deviceProtocol::workflowBOOTLOADER(void){
             QTimer::singleShot(1000,this, SLOT(workflowBOOTLOADER()));
             return;
     }
-
+*/
 
 }

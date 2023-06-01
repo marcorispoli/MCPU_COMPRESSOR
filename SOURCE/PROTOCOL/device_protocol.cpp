@@ -19,23 +19,26 @@ deviceProtocol::deviceProtocol(void):canDeviceProtocol(Application::DEVICE_ID, S
 
     execCmd = 0;
     abortCmd = false;
-    bootloaderPresent = false;
-
     workflow = _WORKFLOW_NONE;
-    subWorkflow = 0;
-    QTimer::singleShot(100,this, SLOT(workflowBOOTINIT()));
-
+    board_initialized = false;
 }
 
-
 typedef enum{
-    _WI_WAIT_CAN_CONNECTION_0 = 0,
+    _WI_BOOTINIT_START = 0,
+    _WI_WAIT_CAN_CONNECTION_0,
     _WI_WAIT_CAN_CONNECTION_1,
     _WI_GET_INFO_REQ_0,
     _WI_GET_INFO_REQ_1,
     _WI_BOOTINIT_COMPLETED,
 }_WorflowBootInitSteps;
 
+void deviceProtocol::boardInitialize(void){
+    if(workflow == _WORKFLOW_BOOTINIT) return; // Is already initializing
+    board_initialized = false;
+    subWorkflow = _WI_BOOTINIT_START;
+    QTimer::singleShot(100,this, SLOT(workflowBOOTINIT()));
+    return;
+}
 
 void deviceProtocol::workflowBOOTINIT(void){
      QString stringa;
@@ -52,16 +55,24 @@ void deviceProtocol::workflowBOOTINIT(void){
 
 
     switch(subWorkflow){
+        case _WI_BOOTINIT_START:
+            qDebug() << "BOARD INITIALIZATION SEQUENCE STARTED";
+            subWorkflow++;
+            QTimer::singleShot(0,this, SLOT(workflowBOOTINIT()));
+            return;
+
         case _WI_WAIT_CAN_CONNECTION_0:
+
             qDebug() << "WAITING FOR THE CONNECTION WITH CAN CLIENT";
             subWorkflow++;
             QTimer::singleShot(0,this, SLOT(workflowBOOTINIT()));
-            break;
+            return;
 
         case _WI_WAIT_CAN_CONNECTION_1:
             if(isCanConnected()) subWorkflow =_WI_GET_INFO_REQ_0;
+            qDebug() << "GET BOOTLOADER INFO";
             QTimer::singleShot(0,this, SLOT(workflowBOOTINIT()));
-        break;
+            return;
 
         case _WI_GET_INFO_REQ_0: // Get info from the Target Bootloader
             if(!bootloaderGetInfo()){
@@ -69,46 +80,46 @@ void deviceProtocol::workflowBOOTINIT(void){
                 return;
             }
             subWorkflow++;
-            break;
+            QTimer::singleShot(10,this, SLOT(workflowBOOTINIT()));
+            return;
 
         case _WI_GET_INFO_REQ_1:
-
             if(!isBootloaderCommunicationOk()){
-                qDebug() << "BOOTLOADER FRAME TIMEOUT ";
                 subWorkflow--;
                 QTimer::singleShot(100,this, SLOT(workflowBOOTINIT()));
                 return;
             }
 
             stringa = "";
-            if(isBootloaderCommandError()){
-                stringa += QString("BOOTLOADER GET INFO ERROR: %1").arg( bootloaderGetCommandError());
+            if(getBootloaderError()){
+                stringa += QString("BOOTLOADER GET INFO ERROR: %1").arg( getBootloaderError());
             }else{
                 if(!isBootloaderPresent()){
-                    stringa += QString("BOOTLOADER NOT PRESENT. Application revision: %1.%2").arg(  bootloaderGetAppRevMaj()).arg(bootloaderGetAppRevMin());
+                    stringa += QString("BOOTLOADER NOT PRESENT. Application revision: %1.%2.%3").arg(boardAppMaj).arg(boardAppMin).arg(boardAppSub);
                 }else{
-                    bootloaderPresent = true;
-                    if(isBootloaderRunning()) stringa += QString("BOOTLOADER PRESENT AND RUNNING.");
+                    if(isBootloaderRunning()){
+                        stringa += QString("BOOTLOADER PRESENT AND RUNNING.");
+                    }
                     else stringa += QString("BOOTLOADER PRESENT BUT NOT RUNNING.");
-                    stringa += QString("APPREV:%1.%2").arg(  bootloaderGetAppRevMaj()).arg(bootloaderGetAppRevMin());
-                    stringa += QString("- BOOTREV:%1.%2").arg(  bootloaderGetBootRevMaj()).arg(bootloaderGetBootRevMin());
+                    stringa += QString("APPREV:%1.%2.%3").arg(boardAppMaj).arg(boardAppMin).arg(boardAppSub);
+                    stringa += QString("APPREV:%1.%2.%3").arg(bootloaderMaj).arg(bootloaderMin).arg(bootloaderSub);
                 }
             }
-
             qDebug() << stringa;
             subWorkflow = _WI_BOOTINIT_COMPLETED;
-            break;
+            QTimer::singleShot(0,this, SLOT(workflowBOOTINIT()));
+            return;
 
         case _WI_BOOTINIT_COMPLETED:
             subWorkflow =  0;
+            board_initialized = true;
             if(INTERFACE) INTERFACE->EVENT_InitCompleted(); // Send the Event to the Master
-
             qDebug() << "WORKFLOW INITIALIZATION COMPLETED";
-            QTimer::singleShot(0,this, SLOT(workflowAPPINIT()));
             return;
     }
 
-    QTimer::singleShot(10,this, SLOT(workflowBOOTINIT()));
+    qDebug() << "WORKFLOW WRONG FASE DETECTED";
+
     return;
 }
 

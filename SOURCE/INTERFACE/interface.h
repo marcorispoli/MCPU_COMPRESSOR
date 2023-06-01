@@ -62,18 +62,16 @@ public:
 
     uint handleReceivedCommand(QList<QString>* frame, QList<QString>* answer); //!< Reimplement the handler for the received Commmands
 
-    inline void EVENT_InitCompleted(void){sendEvent("EVENT_InitCompleted");}
+    #define EVENT_INIT_COMPLETED "EVENT_InitCompleted"
+    void EVENT_InitCompleted(void);
 
 private slots:
 
 
 private:
-    uint GetStatus( QList<QString>* answer);
-    // Protocol Interface Events
+    uint GetRevision( QList<QString>* answer);      //!< Returns the Application revision code
+    uint BoardInitialize( QList<QString>* answer);   //! Returns the Board initialization status and revision codes
 
-    // Protocol Interface commands
-    // uint GetStatus(QList<QString>* command, QList<QString>* answer); //!< Gantry requests the current device status
 
 };
-
 #endif // SERVER_H
